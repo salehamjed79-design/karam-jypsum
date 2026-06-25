@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="logo.jpeg">
+<title>Karam Jypsum</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+    background:#222;
+    color:white;
+}
+
+.logo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#fff;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#222;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.social-section{
+    padding:40px 20px;
+}
+
+.social-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.social-card{
+    width:250px;
+    height:180px;
+    overflow:hidden;
+    border-radius:15px;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+    transition:.3s;
+}
+
+.social-card:hover{
+    transform:scale(1.05);
+}
+
+.social-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:10px;
+    background:white;
+}
+
+.gallery{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.slider{
+    width:80%;
+    max-width:800px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.slider img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+}
+
+.about{
+    background:white;
+    margin:40px auto;
+    width:85%;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.about h2{
+    margin-bottom:15px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><img class="logo" src="logo.jpeg"></div>
+    <h1>Karam Jypsum-كرم للديكور</h1>
+</header>
+
+<section class="social-section">
+    <div class="social-container">
+
+        <div class="social-card"
+        onclick="window.open('https://wa.me/972598490107')">
+            <img src="whatsapp.webp" alt="واتساب">
+        </div>
+
+        <div class="social-card"
+        onclick="window.open('https://vt.tiktok.com/ZSC2cbxQw/')">
+            <img src="tictoklogo.png" alt="تيك توك">
+        </div>
+
+        <div class="social-card"
+        onclick="window.open('https://www.instagram.com/karam_gypsum?igsh=bTZvd295aGpmaHBy')">
+            <img src="instalogo.png" alt="انستغرام">
+        </div>
+                <div class="social-card"
+        onclick="window.open('https://www.facebook.com/share/17qtBv7mLv/?mibextid=wwXIfr')">
+            <img src="facebooklogo.jpg" alt="فيسبوك">
+        </div>
+
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>معرض الأعمال</h2>
+    <br>
+
+    <div class="slider">
+        <img id="slide" src="images/1.jpeg">
+    </div>
+</section>
+
+<section class="about">
+    <h2>من نحن</h2>
+    <p>
+         كرم للديكورات متخصصون في تنفيذ أعمال الديكور الداخلي والخارجي،
+        وتصميم الأسقف الجبسية والدهانات الحديثة والتشطيبات العصرية بأعلى
+        معايير الجودة والدقة، مع خبرة واسعة في تنفيذ المشاريع السكنية والتجارية.
+    </p>
+</section>
+
+<footer>
+    جميع الحقوق محفوظة ©  كرم للديكورات
+</footer>
+
+<script>
+const images = [
+'images/WhatsApp Image 2026-06-25 at 11.38.23 PM.jpeg',
+'images/WhatsApp Image 2026-06-25 at 11.39.01 PM.jpeg',
+'images/WhatsApp Image 2026-06-25 at 11.39.40 PM.jpeg',
+'images/1.jpeg',
+'images/2.jpeg',
+'images/3.jpeg'
+];
+
+let index = 0;
+
+setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slide").src = images[index];
+}, 3000);
+</script>
+
+</body>
+</html>
