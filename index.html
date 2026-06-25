@@ -152,7 +152,8 @@ footer{
     <br>
 
     <div class="slider">
-        <img id="slide" src="images/1.jpeg">
+        //<img id="slide" src="images/1.jpeg">
+        <img id="slide">
     </div>
 </section>
 
@@ -170,21 +171,49 @@ footer{
 </footer>
 
 <script>
-const images = [
-'images/WhatsApp Image 2026-06-25 at 11.38.23 PM.jpeg',
-'images/WhatsApp Image 2026-06-25 at 11.39.01 PM.jpeg',
-'images/WhatsApp Image 2026-06-25 at 11.39.40 PM.jpeg',
-'images/1.jpeg',
-'images/2.jpeg',
-'images/3.jpeg'
-];
+    const repoOwner = "salehamjed79-design"
+const repoName = "karam-jypsum"
+const folderPath = "images";
 
-let index = 0;
+const slide = document.getElementById("slide");
 
-setInterval(() => {
-    index = (index + 1) % images.length;
-    document.getElementById("slide").src = images[index];
-}, 3000);
+async function loadSlider() {
+    try {
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error("فشل في تحميل الصور");
+        }
+
+        const files = await response.json();
+
+        const images = files
+            .filter(file =>
+                file.type === "file" &&
+                /\.(jpg|jpeg|png|webp)$/i.test(file.name)
+            )
+            .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+            .map(file => file.download_url);
+
+        if (images.length === 0) return;
+
+        let index = 0;
+        slide.src = images[index];
+
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            slide.src = images[index];
+        }, 3000);
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+loadSlider();
+
 </script>
 
 </body>
